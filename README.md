@@ -4,13 +4,23 @@ A personal guide to inception.
 # What is Inception?
 Inception is a project to get you acquainted with Docker, a platform that allows for lightweight and compatability problem free testing, development and exectution of programs and applications.
 
-# Part 1: The Virtual Machine (Host Operating System)
+## Understanding the Subject
+### 1: Virtual Machine (Host Operating System)
+#### Why a Virtual Machine?
+    For this project we need root access for Docker's host system. This isn't possible on our user's at 42 and thus the need for virtual machines.
+#### WHIC
+    DEBIAN?
+    ALPINE?
 
-# Part 2: Docker
+# 2: Docker
 
-# Part 3: NGINX
+# 3: NGINX
+What is NGINX?
+Difference between TLSv1.2 and TLSv1.3
 
-# Part 4: MariaDB
+# 4: MariaDB
 
-# Part 5: 
+# 5: Wordpress + php-fpm
+
+# 6: Docker Compose
 
