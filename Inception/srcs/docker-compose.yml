@@ -1,0 +1,11 @@
+services:
+  nginx:
+    container_name:   nginx
+
+    build:            ./requirements/nginx/.
+
+    restart:          always
+
+    ports:            
+                      - "9000:80"
+
