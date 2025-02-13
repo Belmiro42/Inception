@@ -19,7 +19,7 @@ openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:prime256v1 -out /etc/ss
 
 #openssl ecparam -genkey -name prime256v1 -out /etc/ssl/private/ecc_private.key
 
-#openssl ec -in /etc/ssl/private/ecc_private.key -check -noout                          # checks if the ecc key is valid
+openssl ec -in /etc/ssl/private/ecc_private.key -check -noout                          # checks if the ecc key is valid
 
 #todo why is certs hidden?
 #req 
