@@ -34,6 +34,9 @@ touch       /etc/ssl/private/ecc_private.key
 chmod  777  /etc/ssl/private/ecc_private.key 
 ls   -la       /etc/ssl/private/
 pwd
-openssl req -new -x509 -key /etc/ssl/private/ecc_private.key -out ecc_cert.crt -days 365 -subj "/C=ES/L=MD/O=42/OU=student/CN=bmatos-d.42.ma"
+
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out $CERTS_ -subj "/C=MO/L=KH/O=1337/OU=student/CN=sahafid.42.ma"
+
+#openssl req -new -x509 -key /etc/ssl/private/ecc_private.key -out ecc_cert.crt -days 365 -subj "/C=ES/L=MD/O=42/OU=student/CN=bmatos-d.42.ma"
 
 nginx -g "daemon off;"
