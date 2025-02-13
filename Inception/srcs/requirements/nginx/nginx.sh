@@ -30,7 +30,7 @@
 #-days duration
 # How long the request lasts
 
-touch ecc_private.key
-openssl req -new -x509 -key ecc_private.key -out ecc_cert.crt -days 365 -subj "/C=ES/L=MD/O=42/OU=student/CN=bmatos-d.42.ma"
+touch /etc/ssl/private/ecc_private.key
+openssl req -new -x509 -key /etc/ssl/private/ecc_private.key -out ecc_cert.crt -days 365 -subj "/C=ES/L=MD/O=42/OU=student/CN=bmatos-d.42.ma"
 
 sleep infinity
