@@ -30,9 +30,8 @@
 #-days duration
 # How long the request lasts
 
-#openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt -subj "/C=MO/L=KH/O=1337/OU=student/CN=sahafid.42.ma"
-#openssl ecparam -genkey -name prime256v1 -out /etc/ssl/private/ecc_private.key
-#openssl req -new -x509 -days 365 -key /etc/ssl/private/ecc_private.key -out  /etc/ssl/certs/ecc_cert.crt  -subj "/C=ES/L=MD/O=42/OU=student/CN=bmatos-d.42.ma"
-#openssl ec -in /etc/ssl/private/ecc_private.key -check -noout
+openssl ecparam -genkey -name prime256v1 -out /etc/ssl/private/ecc_private.key
+openssl req -new -x509 -days 365 -key /etc/ssl/private/ecc_private.key -out  /etc/ssl/certs/ecc_cert.crt  -subj "/C=ES/L=MD/O=42/OU=student/CN=bmatos-d.42.ma"
+openssl ec -in /etc/ssl/private/ecc_private.key -check -noout
 
 nginx -g "daemon off;"
