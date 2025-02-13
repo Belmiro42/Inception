@@ -1,7 +1,13 @@
-FROM    alpine:latest
+FROM    alpine:3.20
 
-COPY    ./wait.sh /
+RUN     apk update
+RUN     apk upgrade
+RUN     apk add nginx
+RUN     apk add openssl
 
-RUN     chmod 777 /wait.sh 
 
-CMD     ["/wait.sh"]
+COPY    ./nginx.sh /
+
+RUN     chmod 777 /nginx.sh 
+
+CMD     ["/nginx.sh"]
