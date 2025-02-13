@@ -74,9 +74,19 @@ Also, it is strongly recommended to use a .env file to store environment variabl
 Your NGINX container must be the only entrypoint into your infrastructure via the port 443 only, using the TLSv1.2 or TLSv1.3 protocol.
 
 
-# NGINX
-# YAML
-    YAML stands for either yet another markdown language or YAML aint markdown language. Second is funnier and stupider which probably makes it the original definition. YAML is similar to JSON but instead of parentheses it uses python style indents. YAML also supports JSON type parentheses mixed into it. 
+# WHAT IS GOING ON?
+Okay theres quite a lot of new stuff. Lets walk through it all.
+
+Theres YAML files:
+YAML stands for either yet another markdown language or YAML aint markdown language. Second is funnier which probably makes it the original definition. YAML is similar to JSON but instead of parentheses it uses python style indents. YAML also supports JSON type parentheses mixed into it. YAML is normally used for configuration files. We'll be using it to configure our docker architecture.
+
+Docker, Images, Containers, Dockerfile and Docker - Compose
+Docker is a software that builds extremely lightweight environments for testing and in some cases production.
+Dockerfiles build images which when run become containers (the image as a process). 
+Docker Compose coordinates more than one images and their interactions if any.
+
+Certificates and OpenSSL
+
 
 ### SELF LEARNING JOURNEY
 ## PART 1: Virtual Machine
@@ -156,3 +166,6 @@ We notice this prints hello world into our terminal. This is executed by our con
 
 # PART 5: DOCKER-COMPOSE
 Lets go one step further and make a docker-compose to build our container
+
+USEFUL LINKS
+https://docs.openssl.org/master/man1/
