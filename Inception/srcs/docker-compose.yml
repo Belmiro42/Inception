@@ -11,7 +11,7 @@ services:
                                                   # of a crash"
 
     ports:                            
-                      - "443:443"                 # Here we map 443 to 443  because nginx 
+                      - "80:80"                 # Here we map 443 to 443  because nginx 
                                                   # serves https on 443 and http on 80. We
                                                   # shouldnt serve http so no port 80 serving
 
