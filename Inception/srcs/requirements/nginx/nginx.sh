@@ -32,7 +32,7 @@
 
 touch       /etc/ssl/private/ecc_private.key 
 chmod  777  /etc/ssl/private/ecc_private.key 
-ls          /etc/ssl/private/
+ls   -la       /etc/ssl/private/
 pwd
 openssl req -new -x509 -key /etc/ssl/private/ecc_private.key -out ecc_cert.crt -days 365 -subj "/C=ES/L=MD/O=42/OU=student/CN=bmatos-d.42.ma"
 
