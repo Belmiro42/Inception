@@ -13,15 +13,37 @@
 #│ avoid copy and pasting im using an ECC key.                             │
 #└─────────────────────────────────────────────────────────────────────────┘
 
+#Genkey 
+# Generates a private key or key pair.
 
+#-algorithm alg
+# Specify the algorithm to use. EC = Elliptic Curve Cryptography
+
+#-pkeyopt
+# Select an algorithm option. In this case which curve to use in this case
+# y^2 ≡ x^3+ax+b
+
+#-out 
+# Output the key to ...
 
 openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:prime256v1 -out /etc/ssl/private/ecc_private.key
 
-#openssl ecparam -genkey -name prime256v1 -out /etc/ssl/private/ecc_private.key
+#ec 
+# Process and EC key
 
-openssl ec -in /etc/ssl/private/ecc_private.key -check -noout                          # checks if the ecc key is valid
+#-in arg
+# read from this arg
+
+#-check
+# check the validity of the key
+
+#-noout
+# do not print the key
+
+openssl ec -in /etc/ssl/private/ecc_private.key -check #-noout                          # checks if the ecc key is valid
 
 #todo why is certs hidden?
+
 #req 
 # This command primarily creates and processes certificate requests (CSRs) 
 # in PKCS#10 format. It can additionally create self-signed certificates 
