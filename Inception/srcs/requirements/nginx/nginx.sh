@@ -13,6 +13,10 @@
 #│ avoid copy and pasting im using an ECC key.                             │
 #└─────────────────────────────────────────────────────────────────────────┘
 
+
+#┌────────┐
+#│ KEYGEN │	
+#└────────┘
 #Genkey 
 # Generates a private key or key pair.
 
@@ -27,7 +31,9 @@
 # Output the key to ...
 
 openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:prime256v1 -out /etc/ssl/private/ecc_private.key
-
+#┌──────────┐
+#│ KEYCHECK │	
+#└──────────┘
 #ec 
 # Process and EC key
 
@@ -42,7 +48,9 @@ openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:prime256v1 -out /etc/ss
 
 #openssl ec -in /etc/ssl/private/ecc_private.key -check -noout                          # checks if the ecc key is valid
 
-
+#┌──────────────────────┐
+#│ CERTIFICATE CREATION │	
+#└──────────────────────┘
 #req 
 # This command primarily creates and processes certificate requests (CSRs) 
 # in PKCS#10 format. It can additionally create self-signed certificates 
@@ -75,11 +83,11 @@ openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:prime256v1 -out /etc/ss
 #todo why is certs hidden?
 openssl req -new -x509 -days 365 -key /etc/ssl/private/ecc_private.key -out  /etc/ssl/certs/ecc_cert.crt  -subj "/C=ES/L=MD/O=42/OU=student/CN=bmatos-d.42.ma"
 
-#┌─┐
-#│ │
-#├─┤
-#│ │	
-#└─┘
+#┌─────────────────────────────────────────────────────────────────────────┐
+#│                         NGINX CONFIGURATION                             │
+#├─────────────────────────────────────────────────────────────────────────┤
+#│                                                                         │	
+#└─────────────────────────────────────────────────────────────────────────┘
 
 
 nginx -g "daemon off;"

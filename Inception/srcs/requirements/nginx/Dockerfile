@@ -6,6 +6,7 @@ RUN     apk add nginx
 RUN     apk add openssl
 
 
+
 COPY    ./nginx.sh /
 
 RUN     chmod 777 /nginx.sh 
