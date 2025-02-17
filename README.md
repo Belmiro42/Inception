@@ -167,5 +167,16 @@ We notice this prints hello world into our terminal. This is executed by our con
 # PART 5: DOCKER-COMPOSE
 Lets go one step further and make a docker-compose to build our container
 
+# PART 6: MAKEFILE
+
+# PART 7: NGINX CONFGURATION
+    echo "daemon off;" >> /etc/nginx/nginx.conf
+
+    nginx
+
+vs
+
+    nginx -g "daemon off"
+
 USEFUL LINKS
 https://docs.openssl.org/master/man1/
