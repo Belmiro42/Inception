@@ -118,7 +118,7 @@ server {
     ssl_certificate     /etc/ssl/certs/ecc_cert.crt;
     ssl_certificate_key /etc/ssl/private/ecc_private.key;
 
-"                             >> /etc/nginx/nginx.conf
+"                             >> /etc/nginx/sites-available/default
 
 #┌──────────┐
 #│ SSL CONF │	
