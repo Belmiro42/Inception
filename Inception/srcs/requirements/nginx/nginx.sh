@@ -94,4 +94,4 @@ ls -R .
 #echo "daemon off;" > /usr/local/nginx/conf
 
 
-#nginx -g "daemon off;"
+nginx -g "daemon off;"
