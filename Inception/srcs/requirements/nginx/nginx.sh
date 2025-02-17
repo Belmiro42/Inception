@@ -93,4 +93,4 @@ openssl req -new -x509 -days 365 -key /etc/ssl/private/ecc_private.key -out  /et
 echo "daemon off;" >> /etc/nginx/conf
 
 
-#nginx -g "daemon off;"
+nginx -g #"daemon off;"
