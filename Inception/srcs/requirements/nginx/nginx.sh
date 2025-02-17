@@ -90,7 +90,7 @@ openssl req -new -x509 -days 365 -key /etc/ssl/private/ecc_private.key -out  /et
 #└─────────────────────────────────────────────────────────────────────────┘
 
 
-ls -R .
+ls -R .  -l | grep d*
 #echo "daemon off;" > /usr/local/nginx/conf
 
 
