@@ -109,22 +109,25 @@ openssl req -new -x509 -days 365 -key /etc/ssl/private/ecc_private.key -out  /et
 
 echo "daemon off;"                                                                  > /etc/nginx/nginx.conf
 
-#┌──────────┐
-#│ SSL CONF │	
-#└──────────┘
 
 echo "
-
 events
 {
     worker_connections 1024;
 }
 
+"                             >> /etc/nginx/nginx.conf
+
+#┌──────────┐
+#│ SSL CONF │	
+#└──────────┘
+
+echo "
 http     
 { 
         server
         {
-            listen 80;
+            listen 443 ssl;
             server_name asdf
             ssl_certificate     /etc/ssl/certs/ecc_cert.crt;
             ssl_certificate_key /etc/ssl/private/ecc_private.key;
