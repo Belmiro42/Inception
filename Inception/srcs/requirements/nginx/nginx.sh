@@ -129,7 +129,7 @@ http
         server
         {
             listen 443 ssl;
-            server_name asdf
+            server_name bmatos-d.42.ma
             ssl_certificate     /etc/ssl/certs/ecc_cert.crt;
             ssl_certificate_key /etc/ssl/private/ecc_private.key;
         }
