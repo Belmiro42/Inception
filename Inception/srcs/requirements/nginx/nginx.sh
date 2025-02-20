@@ -128,7 +128,7 @@ http
         server
         {
             listen 443 ssl;
-            server_name bmatos-d.42.ma
+            server_name www.bmatos-d.42.ma bmatos-d.42.ma
             ssl_certificate     /etc/ssl/certs/ecc_cert.crt;
             ssl_certificate_key /etc/ssl/private/ecc_private.key;
         }
