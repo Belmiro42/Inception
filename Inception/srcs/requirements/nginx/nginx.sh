@@ -112,9 +112,15 @@ echo "daemon off;"                                                              
 #┌──────────┐
 #│ SSL CONF │	
 #└──────────┘
-
+cat /etc/ssl/certs/ecc_cert.crt
 echo "
-http 
+
+events
+{
+    worker connections 1024
+}
+
+http     
 { 
         server
         {
