@@ -140,7 +140,6 @@ http
             location ~ \.php$
             {
                 try_files                       \$uri =404;
-                fastcgi_pass                    wordpress:9000;
                 include                         fastcgi_params;
             }
         }
@@ -150,6 +149,7 @@ http
 "                             >> /etc/nginx/nginx.conf
 
 #┌──────────┐
+                #fastcgi_pass                    wordpress:9000;
                 #fastcgi_param SCRIPT_FILENAME   $document_root$fastcgi_script_name;
 #│ SSL CONF │	
 #└──────────┘
