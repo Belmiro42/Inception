@@ -118,7 +118,7 @@ events
     worker_connections 1024;
 }
 
-"                             >> /etc/nginx/nginx.conf
+"                                                                                   >> /etc/nginx/nginx.conf
 
 #┌──────────┐
 #│ SSL CONF │	
@@ -135,26 +135,13 @@ http
             ssl_certificate         /etc/ssl/certs/ecc_cert.crt;
             ssl_certificate_key     /etc/ssl/private/ecc_private.key;
             ssl_protocols           TLSv1.3;
-            root                    /var/www/html;
-            index                   index.php;
-            location ~ \.php$
-            {
-                try_files                       \$uri =404;
-                include                         fastcgi_params;
-            }
         }
 
 }
 
-"                             >> /etc/nginx/nginx.conf
+"                                                                                   >> /etc/nginx/nginx.conf
 
 
                 #fastcgi_pass                    wordpress:9000;
                 #fastcgi_param SCRIPT_FILENAME   $document_root$fastcgi_script_name;
-
-#┌──────────┐
-#│ SSL CONF │	
-#└──────────┘
-
-
 nginx
