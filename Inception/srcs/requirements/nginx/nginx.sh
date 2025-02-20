@@ -107,11 +107,14 @@ openssl req -new -x509 -days 365 -key /etc/ssl/private/ecc_private.key -out  /et
 # background. Running in the background will mean we end this script after 
 # the nginx command and the container will stop.
 
-echo "daemon off;"                                                                  >> /etc/nginx/nginx.conf
+cat /etc/nginx/nginx.conf
+echo "daemon off;"                                                                  > /etc/nginx/nginx.conf
 
 #┌──────────┐
 #│ SSL CONF │	
 #└──────────┘
+
+cat /etc/nginx/nginx.conf
 
 echo "
 http 
