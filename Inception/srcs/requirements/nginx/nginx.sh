@@ -131,7 +131,7 @@ http
         {
             listen                  443 ssl;
             listen                  [::]:443 ssl;
-            #server_name             www.bmatos-d.42.ma bmatos-d.42.ma;
+            server_name             www.bmatos-d.42.ma bmatos-d.42.ma;
             ssl_certificate         /etc/ssl/certs/ecc_cert.crt;
             ssl_certificate_key     /etc/ssl/private/ecc_private.key;
             ssl_protocols           TLSv1.3;
@@ -147,7 +147,7 @@ http
 }
 
 "                             >> /etc/nginx/nginx.conf
-cat /etc/hosts > a ; echo "127.0.0.1 bmatos-d.42.ma" > /etc/hosts ; cat a ; cat <a >>/etc/hosts
+cat /etc/hosts > a ; echo "127.0.0.1:443 www.bmatos-d.42.ma" > /etc/hosts; cat <a >>/etc/hosts
 cat /etc/hosts
                 #fastcgi_pass                    wordpress:9000;
                 #fastcgi_param SCRIPT_FILENAME   $document_root$fastcgi_script_name;
