@@ -112,7 +112,7 @@ echo "daemon off;"                                                              
 #┌──────────┐
 #│ SSL CONF │	
 #└──────────┘
-cat /etc/ssl/certs/ecc_cert.crt
+
 echo "
 
 events
