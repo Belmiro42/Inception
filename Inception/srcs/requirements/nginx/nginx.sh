@@ -119,6 +119,7 @@ http
         server
         {
             listen 80;
+            server_name asdf
             ssl_certificate     /etc/ssl/certs/ecc_cert.crt;
             ssl_certificate_key /etc/ssl/private/ecc_private.key;
         }
