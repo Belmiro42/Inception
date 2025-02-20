@@ -117,7 +117,7 @@ echo "
 
 events
 {
-    worker connections 1024
+    worker_connections 1024
 
 
 http     
