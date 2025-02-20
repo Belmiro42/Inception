@@ -130,6 +130,7 @@ http
             ssl_certificate_key /etc/ssl/private/ecc_private.key;
         }
 
+}
 
 "                             >> /etc/nginx/nginx.conf
 
