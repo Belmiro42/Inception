@@ -46,7 +46,7 @@ openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:prime256v1 -out /etc/ss
 #-noout
 # do not print the key
 
-#openssl ec -in /etc/ssl/private/ecc_private.key -check -noout                          # checks if the ecc key is valid
+#openssl ec -in /etc/ssl/private/ecc_private.key -check -noout
 
 #┌──────────────────────┐
 #│ CERTIFICATE CREATION │	
@@ -147,10 +147,10 @@ http
 }
 
 "                             >> /etc/nginx/nginx.conf
-
-#┌──────────┐
                 #fastcgi_pass                    wordpress:9000;
                 #fastcgi_param SCRIPT_FILENAME   $document_root$fastcgi_script_name;
+
+#┌──────────┐
 #│ SSL CONF │	
 #└──────────┘
 
