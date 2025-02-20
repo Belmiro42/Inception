@@ -114,11 +114,16 @@ echo "daemon off;"                                                              
 #└──────────┘
 
 echo "
-server { 
-    ssl_certificate     /etc/ssl/certs/ecc_cert.crt;
-    ssl_certificate_key /etc/ssl/private/ecc_private.key;
+http 
+{ 
+        server
+        {
+            listen 80;
+            ssl_certificate     /etc/ssl/certs/ecc_cert.crt;
+            ssl_certificate_key /etc/ssl/private/ecc_private.key;
+        }
 
-"                             >> /etc/nginx/sites-available/default
+"                             >> /etc/nginx/nginx.conf
 
 #┌──────────┐
 #│ SSL CONF │	
