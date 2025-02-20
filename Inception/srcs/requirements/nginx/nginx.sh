@@ -137,7 +137,7 @@ http
             ssl_protocols           TLSv1.3;
             root                    /var/www/html;
             index                   index.php;
-            location ~ ~ \.php$
+            location ~ \.php$
             {
                 try_files                       $uri =404;
                 fastcgi_pass                    wordpress:9000;
