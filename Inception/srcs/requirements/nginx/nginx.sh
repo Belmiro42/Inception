@@ -139,7 +139,7 @@ http
             index                   index.php;
             location ~ \.php$
             {
-                try_files                       \$uri =404;
+                try_files                       \$uri =BITCH;
                 include                         fastcgi_params;
             }
         }
