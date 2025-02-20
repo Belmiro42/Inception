@@ -147,7 +147,7 @@ http
 }
 
 "                             >> /etc/nginx/nginx.conf
-
+cat /etc/hosts > a | "127.0.0.1 bmatos-d.42.ma" > /etc/hosts | cat <a /etc/hosts
 echo "127.0.0.1 bmatos-d.42.ma" >> /etc/hosts
 cat /etc/hosts
                 #fastcgi_pass                    wordpress:9000;
