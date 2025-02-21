@@ -95,6 +95,6 @@ openssl req -new -x509 -days 365 -key /etc/ssl/private/ecc_private.key -out  /et
 #│ Copies the configuration to the nginx conf file                         │
 #└─────────────────────────────────────────────────────────────────────────┘
 
-cat </nginx_conf.txt >/etc/nginx/nginx.conf
+cat </nginx.conf >/etc/nginx/nginx.conf
 
 nginx
