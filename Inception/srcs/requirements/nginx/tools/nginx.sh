@@ -5,11 +5,11 @@
 #├─┤
 #│ │	
 #└─┘
-
-apk update      >listen
-apk upgrade     >listen
-apk add nginx   >listen
-apk add openssl >listen
+chmod   777         /nginx.sh
+apk     update      >listen
+apk     upgrade     >listen
+apk     add nginx   >listen
+apk     add openssl >listen
 
 #┌─────────────────────────────────────────────────────────────────────────┐
 #│               GENERATING AND STORING THE CERTIFICATE                    │	
