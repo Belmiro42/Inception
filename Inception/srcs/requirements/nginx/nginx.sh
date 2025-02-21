@@ -95,7 +95,7 @@ openssl req -new -x509 -days 365 -key /etc/ssl/private/ecc_private.key -out  /et
 #│ Copies the configuration to the nginx conf file                         │
 #└─────────────────────────────────────────────────────────────────────────┘
 
-cat </nginx.conf >/etc/nginx/nginx.conf
-cat "12.0.0.1 bmatos-d.42.ma" > /etc/hosts
+cat     < /nginx.conf                 > /etc/nginx/nginx.conf
+echo      "12.0.0.1 bmatos-d.42.ma"   > /etc/hosts
 
 nginx
