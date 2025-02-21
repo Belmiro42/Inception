@@ -97,6 +97,4 @@ openssl req -new -x509 -days 365 -key /etc/ssl/private/ecc_private.key -out  /et
 
 cat </nginx_conf.txt >/etc/nginx/nginx.conf
 
-                #fastcgi_pass                    wordpress:9000;
-                #fastcgi_param SCRIPT_FILENAME   $document_root$fastcgi_script_name;
 nginx
