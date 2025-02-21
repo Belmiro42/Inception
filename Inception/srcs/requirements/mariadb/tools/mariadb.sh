@@ -2,5 +2,3 @@
 
 echo "hello"
 
-
-sleep infinty
