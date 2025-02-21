@@ -6,10 +6,10 @@
 #│ │	
 #└─┘
 
-apk update
-apk upgrade
-apk add nginx
-apk add openssl
+apk update      >listen
+apk upgrade     >listen
+apk add nginx   >listen
+apk add openssl >listen
 
 #┌─────────────────────────────────────────────────────────────────────────┐
 #│               GENERATING AND STORING THE CERTIFICATE                    │	
