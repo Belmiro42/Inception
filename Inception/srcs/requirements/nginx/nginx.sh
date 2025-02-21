@@ -6,6 +6,11 @@
 #│ │	
 #└─┘
 
+apk update
+apk upgrade
+apk add nginx
+apk add openssl
+
 #┌─────────────────────────────────────────────────────────────────────────┐
 #│               GENERATING AND STORING THE CERTIFICATE                    │	
 #├─────────────────────────────────────────────────────────────────────────┤
@@ -83,64 +88,14 @@ openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:prime256v1 -out /etc/ss
 #todo why is certs hidden?
 openssl req -new -x509 -days 365 -key /etc/ssl/private/ecc_private.key -out  /etc/ssl/certs/ecc_cert.crt  -subj "/C=ES/L=MD/O=42/OU=CEO/CN=bmatos-d.42.ma"
 
+
 #┌─────────────────────────────────────────────────────────────────────────┐
-#│                         NGINX CONFIGURATION                             │
+#│                          NGINX CONFIGURATION                            │	
 #├─────────────────────────────────────────────────────────────────────────┤
-#│ Here we configure nginx.                                                │	
-#│ https://nginx.org/en/docs/beginners_guide.html                          │	
-#│ nginx consists of modules which are controlled by directives specified  │
-#│ in the configuration file. Directives are divided into simple directives│ 
-#│ and block directives. A simple directive consists of the name and       │
-#│ parameters separated by spaces and ends with a semicolon (;). A block   │
-#│ directive has the same structure as a simple directive, but instead of  │
-#│ the semicolon it ends with a set of additional instructions surrounded  │
-#│ by braces ({ and }). If a block directive can have other directives     │
-#│ inside braces, it is called a context (examples: events, http, server,  │
-#│ and location).                                                          │         
-#│                                                                         │	
+#│ Copies the configuration to the nginx conf file                         │
 #└─────────────────────────────────────────────────────────────────────────┘
 
-#┌────────────┐
-#│ DAEMON OFF │	
-#└────────────┘
-# This turns off the daemon option for nginx which makes nginx run in the 
-# background. Running in the background will mean we end this script after 
-# the nginx command and the container will stop.
-
-echo "daemon off;"                                                                  > /etc/nginx/nginx.conf
-
-#┌─────────────┐
-#│ EVENT BLOCK │	
-#└─────────────┘
-echo "
-events
-{
-    worker_connections 1024;
-}
-
-"                                                                                   >> /etc/nginx/nginx.conf
-
-#┌──────────┐
-#│ SSL CONF │	
-#└──────────┘
-
-echo "
-http     
-{ 
-        server
-        {
-            listen                  443 ssl;
-            listen                  [::]:443 ssl;
-            server_name             www.bmatos-d.42.ma bmatos-d.42.ma;
-            ssl_certificate         /etc/ssl/certs/ecc_cert.crt;
-            ssl_certificate_key     /etc/ssl/private/ecc_private.key;
-            ssl_protocols           TLSv1.3;
-        }
-
-}
-
-"                                                                                   >> /etc/nginx/nginx.conf
-
+cat </nginx_conf.txt >/etc/nginx/nginx.conf
 
                 #fastcgi_pass                    wordpress:9000;
                 #fastcgi_param SCRIPT_FILENAME   $document_root$fastcgi_script_name;

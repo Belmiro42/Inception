@@ -1,13 +1,7 @@
 FROM    alpine:3.20
 
-RUN     apk update
-RUN     apk upgrade
-RUN     apk add nginx
-RUN     apk add openssl
-
-
-
 COPY    ./nginx.sh /
+COPY    ./conf/nginx_conf.txt /
 
 RUN     chmod 777 /nginx.sh 
 
