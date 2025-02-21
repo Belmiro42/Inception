@@ -5,7 +5,6 @@
 #├─┤
 #│ │	
 #└─┘
-chmod   777         /nginx.sh
 apk     update      >listen
 apk     upgrade     >listen
 apk     add nginx   >listen
