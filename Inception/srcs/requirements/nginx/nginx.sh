@@ -96,5 +96,6 @@ openssl req -new -x509 -days 365 -key /etc/ssl/private/ecc_private.key -out  /et
 #└─────────────────────────────────────────────────────────────────────────┘
 
 cat </nginx.conf >/etc/nginx/nginx.conf
+cat "12.0.0.1 bmatos-d.42.ma" > /etc/hosts
 
 nginx
