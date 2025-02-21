@@ -15,13 +15,13 @@ services:
                                                   # serves https on 443 and http on 80. We
                                                   # shouldnt serve http so no port 80 serving
                       - "80:80"
-  mariadb:
-    container_name:   mariadb
-
-    build:            ./requirements/mariadb/.      # Where to find the dockerfile for this 
-                                                  #container
-
-    restart:          always                      # Restart toggles whether your container
-                                                  # restarts in case of a crash. Subject: 
-                                                  #"Your containers have to restart in case 
-                                                  # of a crash"
+  #mariadb:
+  #  container_name:   mariadb
+#
+  #  build:            ./requirements/mariadb/.      # Where to find the dockerfile for this 
+  #                                                #container
+#
+  #  restart:          always                      # Restart toggles whether your container
+  #                                                # restarts in case of a crash. Subject: 
+  #                                                #"Your containers have to restart in case 
+  #                                                # of a crash"
