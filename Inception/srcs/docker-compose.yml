@@ -21,7 +21,17 @@ services:
     build:            ./requirements/mariadb/.      # Where to find the dockerfile for this 
                                                   #container
 
-    restart:          always                      # Restart toggles whether your container
+    #restart:          always                      # Restart toggles whether your container
+                                                  # restarts in case of a crash. Subject: 
+                                                  #"Your containers have to restart in case 
+                                                  # of a crash"
+  wordpress:
+    container_name:   wordpress
+
+    build:            ./requirements/wordpress/.      # Where to find the dockerfile for this 
+                                                  #container
+
+    #restart:          always                      # Restart toggles whether your container
                                                   # restarts in case of a crash. Subject: 
                                                   #"Your containers have to restart in case 
                                                   # of a crash"
