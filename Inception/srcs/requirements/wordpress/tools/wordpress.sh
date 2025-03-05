@@ -1,1 +1,1 @@
-echo OMG IM UP
+echo "OMG IM UP"
