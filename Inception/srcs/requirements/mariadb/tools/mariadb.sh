@@ -10,6 +10,7 @@ rc-update add mariadb default
 
 rc-service mariadb start
 
+sleep 5;
 mysql -u root -p << EOF
 CREATE DATABASE IF NOT EXISTS $db1_name ;
 CREATE USER IF NOT EXISTS '$db1_user'@'%' IDENTIFIED BY '$db1_pwd' ;
