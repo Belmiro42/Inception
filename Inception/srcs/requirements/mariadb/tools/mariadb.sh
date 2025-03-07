@@ -1,8 +1,8 @@
 #! bin/sh
 
 # Install MariaDB
-apt-get update -y
-apt-get install mariadb-server -y
+apk add mysql-*
+apk add mariadb mariadb-client
 
 # Start the MariaDB Service
 service mysql start 
