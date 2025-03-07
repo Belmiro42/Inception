@@ -1,11 +1,10 @@
 #! bin/sh
 
 # Install MariaDB
-apk add mysql-*
 apk add mariadb mariadb-client
 
 # Start the MariaDB Service
-service mysql start 
+service mariadb start 
 
 
 mysql -u root -p << EOF

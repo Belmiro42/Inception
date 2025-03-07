@@ -1,27 +1,27 @@
 services:
-  nginx:
-    container_name:   nginx
-
-    build:            ./requirements/nginx/.      # Where to find the dockerfile for this 
-                                                  #container
-
-    restart:          always                      # Restart toggles whether your container
-                                                  # restarts in case of a crash. Subject: 
-                                                  #"Your containers have to restart in case 
-                                                  # of a crash"
-
-    ports:                            
-                      - "80:80"                    
-                      - "443:443"                 # Here we map 443 to 443  because nginx 
-                                                  # serves https on 443 and http on 80. We
-                                                  # shouldnt serve http so no port 80 serving
-
-
-
-  wordpress:
-    container_name:   wordpress
-
-    build:            ./requirements/wordpress/.  # Where to find the dockerfile for this 
+  #nginx:
+  #  container_name:   nginx
+#
+  #  build:            ./requirements/nginx/.      # Where to find the dockerfile for this 
+  #                                                #container
+#
+  #  restart:          always                      # Restart toggles whether your container
+  #                                                # restarts in case of a crash. Subject: 
+  #                                                #"Your containers have to restart in case 
+  #                                                # of a crash"
+#
+  #  ports:                            
+  #                    - "80:80"                    
+  #                    - "443:443"                 # Here we map 443 to 443  because nginx 
+  #                                                # serves https on 443 and http on 80. We
+  #                                                # shouldnt serve http so no port 80 serving
+#
+#
+#
+  #wordpress:
+  #  container_name:   wordpress
+#
+  #  build:            ./requirements/wordpress/.  # Where to find the dockerfile for this 
                                                   #container
 
     #restart:          always                     # Restart toggles whether your container
