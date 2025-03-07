@@ -28,7 +28,7 @@ services:
                                                   # restarts in case of a crash. Subject: 
                                                   #"Your containers have to restart in case 
                                                   # of a crash"
- mariadb:
+  mariadb:
     container_name:   mariadb
 
     build:            ./requirements/mariadb/.      # Where to find the dockerfile for this 
