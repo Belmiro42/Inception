@@ -1,6 +1,6 @@
 #!/bin/sh
 
-apk add --no-cache mariadb mariadb-client
+apk add --no-cache mariadb mariadb-client openrc
 rc-service mariadb start
 
 sleep 5;
@@ -14,3 +14,4 @@ EOF
 
 rc-update add mariadb default
 rc-service mariadb restart
+3
