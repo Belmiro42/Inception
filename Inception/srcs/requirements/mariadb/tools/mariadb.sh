@@ -2,6 +2,9 @@
 
 # Install MariaDB
 apk add mariadb mariadb-client
+rc-service mariadb start
+mysql_secure_installation
+rc-update add mariadb default
 
 # Start the MariaDB Service
 service mariadb start 
@@ -16,3 +19,4 @@ FLUSH PRIVILEGES;
 EOF
 
 sudo systemctl restart mariadb
+rc-update add mariadb default
