@@ -1,14 +1,14 @@
-#! bin/sh
+#!/bin/sh
 
-# Install MariaDB
 apk add mariadb mariadb-client
+
 rc-service mariadb start
+
 mysql_secure_installation
+
 rc-update add mariadb default
 
-# Start the MariaDB Service
-service mariadb start 
-
+rc-service mariadb start
 
 mysql -u root -p << EOF
 CREATE DATABASE IF NOT EXISTS $db1_name ;
@@ -18,5 +18,4 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '12345' ;
 FLUSH PRIVILEGES;
 EOF
 
-sudo systemctl restart mariadb
-rc-update add mariadb default
+rc-service mariadb restart
