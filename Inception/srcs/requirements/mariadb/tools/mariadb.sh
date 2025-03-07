@@ -15,4 +15,4 @@ EOF
 rc-update add mariadb default
 rc-service mariadb restart
 
-exec mysqld
+exec mysqld --user=mysql
