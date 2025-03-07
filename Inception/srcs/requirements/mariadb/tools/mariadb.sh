@@ -1,13 +1,6 @@
 #!/bin/sh
 
-apk add mariadb mariadb-client
-
-rc-service mariadb start
-
-mysql_secure_installation
-
-rc-update add mariadb default
-
+apk add --no-cache mariadb mariadb-client
 rc-service mariadb start
 
 sleep 5;
@@ -19,4 +12,5 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '12345' ;
 FLUSH PRIVILEGES;
 EOF
 
+rc-update add mariadb default
 rc-service mariadb restart
