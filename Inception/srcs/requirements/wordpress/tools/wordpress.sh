@@ -33,8 +33,8 @@ curl    -O                                  https://raw.githubusercontent.com/wp
 chmod   +x                                  wp-cli.phar
 mv      wp-cli.phar                         /usr/local/bin/wp
 wp      core download                       --allow-root
-mv      /var/www/html/wp-config-sample.php  /var/www/html/wp-config.php
-mv      /wp-config.php                      /var/www/html/wp-config.php
+rm      ./wp-config-sample.php
+mv      /wp-config.php                      ./wp-config.php
 
 sed -i -r "s/db1/$db_name/1" wp-config.php
 sed -i -r "s/user/$db_user/1" wp-config.php
