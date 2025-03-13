@@ -6,8 +6,8 @@ apk add --no-cache mariadb mariadb-client openrc
 echo "mysqld --initialize-insecure --datadir=/var/lib/mysql"
 mysqld --initialize-insecure --datadir=/var/lib/mysql
 
-rc-service mariadb start 
 echo "rc-service mariadb start"
+rc-service mariadb start 
 
 echo "sleep 5;"
 sleep 5;
