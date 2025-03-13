@@ -2,7 +2,7 @@
 
 
 echo "apk add  mariadb mariadb-client openrc"
-apk add   --no-chache mariadb mariadb-client openrc
+apk add --no-cache mariadb mariadb-client openrc
 echo "mysqld --initialize-insecure --datadir=/var/lib/mysql"
 mysqld --initialize-insecure --datadir=/var/lib/mysql
 
