@@ -12,7 +12,7 @@ echo "netstat -ln | grep mysqld"
 netstat -ln | grep mysqld
 
 echo "mysqld --initialize-insecure --datadir=/var/lib/mysql"
-mysqld --user=mysql --datadir=/var/lib/mysql &
+mysqld --user=mysql --datadir=/var/lib/mysql 
 
 
 #sleep 5;
