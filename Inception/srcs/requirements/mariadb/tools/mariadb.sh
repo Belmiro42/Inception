@@ -1,6 +1,10 @@
 #!/bin/sh
 
+echo "apk add --no-cache mariadb mariadb-client openrc"
 apk add --no-cache mariadb mariadb-client openrc
+
+echo "mysqld --initialize-insecure --datadir=/var/lib/mysql"
+mysqld --initialize-insecure --datadir=/var/lib/mysql
 
 sleep 5;
 
@@ -17,5 +21,5 @@ EOF
 
 echo "rc-update add mariadb default"
 rc-update add mariadb default
-mysqld --initialize-insecure --datadir=/var/lib/mysql
-rc-service mariadb restart
+
+mysqld
