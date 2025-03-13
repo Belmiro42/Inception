@@ -14,6 +14,8 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '12345' ;
 FLUSH PRIVILEGES;
 EOF
 
+
+echo "rc-update add mariadb default"
 rc-update add mariadb default
 mysqld --initialize-insecure --datadir=/var/lib/mysql
 rc-service mariadb restart
