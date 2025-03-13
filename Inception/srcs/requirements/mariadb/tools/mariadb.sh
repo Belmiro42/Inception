@@ -3,6 +3,9 @@
 apk add --no-cache mariadb mariadb-client openrc
 
 sleep 5;
+
+echo "mysql -u root -p << EOF"
+
 mysql -u root -p << EOF
 CREATE DATABASE IF NOT EXISTS $db1_name ;
 CREATE USER IF NOT EXISTS '$db1_user'@'%' IDENTIFIED BY '$db1_pwd' ;
