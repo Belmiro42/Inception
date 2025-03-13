@@ -2,9 +2,10 @@
 
 
 echo "apk add  mariadb mariadb-client openrc"
-apk add --no-cache mariadb mariadb-client openrc
+apk add --no-cache mariadb mariadb-client openrc su-exec
+
 echo "mysqld --initialize-insecure --datadir=/var/lib/mysql"
-su-exec mysqld --initialize-insecure --datadir=/var/lib/mysql
+s-exec mysqld --initialize-insecure --datadir=/var/lib/mysql
 
 echo "rc-service mariadb start"
 rc-service mariadb start 
