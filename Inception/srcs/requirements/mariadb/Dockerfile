@@ -1,7 +1,20 @@
-FROM    alpine:3.20
+FROM alpine:3.20
 
-COPY    ./tools/mariadb.sh      /
-COPY    ./conf/my.cnf           /etc/mysql/mariadb.conf.d/
+RUN apk add --no-cache mariadb mariadb-client gettext vim
 
-CMD     ["/mariadb.sh"]
+RUN mkdir -p /var/lib/mysql /run/mysqld && \
+	chown -R mysql:mysql /var/lib/mysql /run/mysqld
 
+COPY conf/my.cnf /etc/my.cnf
+
+COPY tools/init.sql /docker-entrypoint-initdb.d/
+
+COPY tools/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+EXPOSE 3306
+
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+
+CMD ["mysqld"]
