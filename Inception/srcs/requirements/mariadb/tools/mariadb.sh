@@ -4,7 +4,7 @@ echo "apk add --no-cache mariadb mariadb-client openrc"
 apk add --no-cache mariadb mariadb-client openrc
 
 echo "mysqld --initialize-insecure --datadir=/var/lib/mysql"
-mysqld --initialize-insecure --datadir=/var/lib/mysql
+mysqld --user=mysql --initialize-insecure --datadir=/var/lib/mysql
 
 sleep 5;
 
