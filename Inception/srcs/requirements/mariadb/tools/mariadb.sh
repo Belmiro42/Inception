@@ -2,7 +2,7 @@
 
 
 echo "apk add  mariadb mariadb-client openrc"
-apk add --no-cache mariadb mariadb-client openrc su-exec
+apk add --no-cache mariadb mariadb-client openrc su-exec mysql-server
 
 
 
