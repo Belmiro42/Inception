@@ -1,7 +1,6 @@
 all 	: up
 
 up			:
-	git pull
 	docker-compose -f ./srcs/docker-compose.yml up
 	
 
