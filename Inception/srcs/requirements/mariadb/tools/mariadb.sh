@@ -1,7 +1,6 @@
 #!/bin/sh
 
 apk add --no-cache mariadb mariadb-client openrc
-rc-service mariadb start
 
 sleep 5;
 mysql -u root -p << EOF
@@ -13,6 +12,5 @@ FLUSH PRIVILEGES;
 EOF
 
 rc-update add mariadb default
+mysqld --initialize-insecure --datadir=/var/lib/mysql
 rc-service mariadb restart
-
-exec mysqld --user=mysql
