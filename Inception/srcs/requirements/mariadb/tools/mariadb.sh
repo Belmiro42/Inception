@@ -13,7 +13,7 @@ echo "sleep 5;"
 
 echo ""
 
-mysql -u  << EOF
+mysql << EOF
 CREATE DATABASE IF NOT EXISTS $db1_name ;
 CREATE USER IF NOT EXISTS '$db1_user'@'%' IDENTIFIED BY '$db1_pwd' ;
 GRANT ALL PRIVILEGES ON $db1_name.* TO '$db1_user'@'%' ;
