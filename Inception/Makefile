@@ -1,8 +1,8 @@
 all 	: up
 
 up			:
-	make flush
 	git pull
+	docker-compose -f ./srcs/docker-compose.yml up
 	
 
 down		:
