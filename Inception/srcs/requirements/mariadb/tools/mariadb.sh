@@ -6,9 +6,6 @@ apk add --no-cache mariadb mariadb-client openrc su-exec
 
 
 
-echo "rc-service mariadb start"
-rc-service mariadb start 
-
 echo "sleep 5;"
 sleep 5;
 
