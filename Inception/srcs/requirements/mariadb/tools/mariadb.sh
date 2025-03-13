@@ -9,7 +9,7 @@ chown -R mysql:mysql /var/lib/mysql /run/mysqld
 
 
 echo "mysqld --initialize-insecure --datadir=/var/lib/mysql"
-mysqld --user=mysql --datadir=/var/lib/mysql &
+mysqld --user=mysql --datadir=/var/lib/mysql/mysql &
 
 sleep 5;
 
