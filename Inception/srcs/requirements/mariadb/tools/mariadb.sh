@@ -8,6 +8,7 @@ mkdir -p /var/lib/mysql /run/mysqld
 chown -R mysql:mysql /var/lib/mysql /run/mysqld
 chown -R mysql:mysql /var/lib/mysql /run/mysqld
 
+echo "netstat -ln | grep mysqld"
 netstat -ln | grep mysqld
 
 echo "mysqld --initialize-insecure --datadir=/var/lib/mysql"
