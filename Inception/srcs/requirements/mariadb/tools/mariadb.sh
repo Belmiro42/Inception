@@ -1,17 +1,19 @@
 #!/bin/sh
 
 
-apk add  mariadb mariadb-client openrc
 echo "apk add  mariadb mariadb-client openrc"
+apk add   --no-chache mariadb mariadb-client openrc
+echo "mysqld --initialize-insecure --datadir=/var/lib/mysql"
+mysqld --initialize-insecure --datadir=/var/lib/mysql
 
-rc-service mariadb start
+rc-service mariadb start 
 echo "rc-service mariadb start"
 
-sleep 5;
 echo "sleep 5;"
+sleep 5;
 
 
-echo ""
+echo "MYSQL"
 
 mysql << EOF
 CREATE DATABASE IF NOT EXISTS $db1_name ;
@@ -21,11 +23,8 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '12345' ;
 FLUSH PRIVILEGES;
 EOF
 
-rc-update add mariadb default
 echo "rc-update add mariadb default"
+rc-update add mariadb default
 
-mysqld --initialize-insecure --datadir=/var/lib/mysql
-echo "mysqld --initialize-insecure --datadir=/var/lib/mysql"
-
-rc-service mariadb restart
 echo "rc-service mariadb restart"
+rc-service mariadb restart
