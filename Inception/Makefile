@@ -11,7 +11,7 @@ build:
 
 # Start the services in the background
 up:
-	docker-compose -f $(COMPOSE_FILE) up -d
+	docker-compose -f $(COMPOSE_FILE) up
 
 # Stop the services
 down:
