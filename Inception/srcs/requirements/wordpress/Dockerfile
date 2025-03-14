@@ -1,8 +1,6 @@
-FROM    debian:bullseye
+FROM    alpine:3.20
 
-ENV     DEBIAN_FRONTEND=noninteractive
+COPY    source dest
+COPY    source dest
 
-COPY    ./tools/wordpress.sh    /
-COPY    ./conf/wp-config.php    /
-
-CMD     ["/wordpress.sh"]
+CMD     ["cmd.sh"]

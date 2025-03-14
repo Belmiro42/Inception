@@ -1,21 +1,43 @@
-all 	: up
+# Makefile for Docker Compose
 
-up			:
-	docker-compose -f ./srcs/docker-compose.yml up
-	
+# Name of the Docker Compose service (you can change this)
+COMPOSE_FILE=docker-compose.yml
 
-down		:
-	docker-compose -f ./srcs/docker-compose.yml down
+# Define services in Docker Compose (if you have specific ones, modify this)
+SERVICES=wordpress mysql
 
-logs		:
-	docker-compose -f ./srcs/docker-compose.yml logs
+# Build the Docker images defined in the Docker Compose file
+build:
+	docker-compose -f $(COMPOSE_FILE) build
 
-what		:
-	@echo PROCESSES $(shell docker ps -a -q | wc -l)
-	@docker ps -a -q
-	@echo IMAGES $(shell docker images -a -q | wc -l)
-	@docker images -a -q
+# Start the services in the background
+up:
+	docker-compose -f $(COMPOSE_FILE) up -d
 
-flush	 	:
-	@docker stop $(shell docker ps -q -a)
-	@docker rm $(shell docker ps -q -a); docker image rm $(shell docker images -q -a)
+# Stop the services
+down:
+	docker-compose -f $(COMPOSE_FILE) down
+
+# View the logs of the services
+logs:
+	docker-compose -f $(COMPOSE_FILE) logs -f
+
+# List running Docker Compose services
+ps:
+	docker-compose -f $(COMPOSE_FILE) ps
+
+# Run a one-time command on a running container
+exec:
+	docker-compose -f $(COMPOSE_FILE) exec $(SERVICE) $(COMMAND)
+
+# Clean up unused Docker resources (images, containers, volumes, etc.)
+prune:
+	docker system prune -f
+
+# Build and start the containers in one go
+restart: down up
+
+# Run tests if you have any test containers
+test:
+	docker-compose -f $(COMPOSE_FILE) run --rm $(SERVICE) /bin/sh -c "your-tests-here"
+

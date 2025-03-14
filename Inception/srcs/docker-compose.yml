@@ -1,68 +1,42 @@
----
-
 services:
-  #nginx:
-  #  build:
-  #    context: ./requirements/nginx
-
-  #  container_name: nginx
-
-  #  ports:
-  #    - "443:443"
-  #  networks:
-  #    - wp_network
-  #  depends_on:
-  #    - wordpress
-  #  volumes:
-  #    - wordpress_files:/var/www/wordpress:ro
-
-  #wordpress:
-  #  build:
-  #    context: ./requirements/wordpress
-
-  #  container_name: wordpress
-
-  #  env_file:
-  #    - .env
-
-  #  networks:
-  #    - wp_network
-  #  depends_on:
-  #    - mariadb
-  #  volumes:
-  #    - wordpress_files:/var/www/wordpress
-
-  mariadb:
-    build:
-      context: ./requirements/mariadb
-
-    container_name: mariadb
-
-    restart: always
-
-    networks:
-      - wp_network
+  nginx:
+    build:            ./requirements/nginx
+    container_name:   nginx
+    depends_on:
+                      -wordpress
+    ports:
+                      -"443:443"
     volumes:
-      - wordpress_db:/var/lib/mysql
+                      -wordpress_volume:/var/www/wordpress:ro
+    restart:
+                      always
 
-    env_file:
-      - .env
-
+    
+  
+  wordpress:
+    build:            ./requirements/wordpress
+    container_name:   wordpress
+    depends_on:
+                      -mariadb
+    volumes:
+                      -wordpress_volume:/var/www/wordpress
+    restart: 
+                      always
+  
+  mariadb:
+    build:            ./requirements/mariadb
+    container_name:   mariadb
+    volumes:
+                      -wordpress_database:/var/lib/mysql
+    restart:
+                      always
+  
 volumes:
-  wordpress_files:
-    driver: local
+  wordpress_volume:
     driver_opts:
-      o: bind
-      type: none
-      device: /home/bmatos-d/data/wordpress
+      device:         /home/bmatos-d/data/wordpress
 
-  wordpress_db:
-    driver: local
+  wordpress_database:
     driver_opts:
-      o: bind
-      type: none
-      device: /home/bmatos-d/data/mysql
-
-networks:
-  wp_network:
-    driver: bridge
+      device:         /home/bmatos-d/data/mysql
+  
