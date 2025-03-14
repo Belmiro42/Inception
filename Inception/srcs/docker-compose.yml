@@ -33,12 +33,12 @@ services:
   
 volumes:
   wordpress_volume:
-    type: none
     driver_opts:
+      type: none
       device:         /home/bmatos-d/data/wordpress
 
   wordpress_database:
-    type: none
     driver_opts:
+      type: none
       device:         /home/bmatos-d/data/mysql
   
