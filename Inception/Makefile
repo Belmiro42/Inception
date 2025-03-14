@@ -1,7 +1,7 @@
 # Makefile for Docker Compose
 
 # Name of the Docker Compose service (you can change this)
-COMPOSE_FILE=./requuirements/docker-compose.yml
+COMPOSE_FILE=./requirements/docker-compose.yml
 
 
 
