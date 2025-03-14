@@ -1,34 +1,68 @@
+---
+
 services:
   #nginx:
-  #  container_name:   nginx
-#
-  #  build:            ./requirements/nginx/.      # Where to find the dockerfile for this 
-  #                                                #container
-#
-  #  restart:          always                      # Restart toggles whether your container
-  #                                                # restarts in case of a crash. Subject: 
-  #                                                #"Your containers have to restart in case 
-  #                                                # of a crash"
-#
-  #  ports:                            
-  #                    - "80:80"                    
-  #                    - "443:443"                 # Here we map 443 to 443  because nginx 
-  #                                                # serves https on 443 and http on 80. We
-  #                                                # shouldnt serve http so no port 80 serving
-#
-#
-#
+  #  build:
+  #    context: ./requirements/nginx
+
+  #  container_name: nginx
+
+  #  ports:
+  #    - "443:443"
+  #  networks:
+  #    - wp_network
+  #  depends_on:
+  #    - wordpress
+  #  volumes:
+  #    - wordpress_files:/var/www/wordpress:ro
+
   #wordpress:
-  #  container_name:   wordpress
-#
-  #  build:            ./requirements/wordpress/.  # Where to find the dockerfile for this 
-                                                  #container
+  #  build:
+  #    context: ./requirements/wordpress
 
-    #restart:          always                     # Restart toggles whether your container
-                                                  # restarts in case of a crash. Subject: 
-                                                  #"Your containers have to restart in case 
-                                                  # of a crash"
+  #  container_name: wordpress
+
+  #  env_file:
+  #    - .env
+
+  #  networks:
+  #    - wp_network
+  #  depends_on:
+  #    - mariadb
+  #  volumes:
+  #    - wordpress_files:/var/www/wordpress
+
   mariadb:
-    container_name:   mariadb
+    build:
+      context: ./requirements/mariadb
 
-    build:            ./requirements/mariadb/.      # Where to find the dockerfile for this 
+    container_name: mariadb
+
+    restart: always
+
+    networks:
+      - wp_network
+    volumes:
+      - wordpress_db:/var/lib/mysql
+
+    env_file:
+      - .env
+
+volumes:
+  wordpress_files:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/bmatos-d/data/wordpress
+
+  wordpress_db:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/bmatos-d/data/mysql
+
+networks:
+  wp_network:
+    driver: bridge
