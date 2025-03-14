@@ -1,10 +1,9 @@
 # Makefile for Docker Compose
 
 # Name of the Docker Compose service (you can change this)
-COMPOSE_FILE=docker-compose.yml
+COMPOSE_FILE=./requuirements/docker-compose.yml
 
-# Define services in Docker Compose (if you have specific ones, modify this)
-SERVICES=wordpress mysql
+
 
 # Build the Docker images defined in the Docker Compose file
 build:
@@ -26,18 +25,10 @@ logs:
 ps:
 	docker-compose -f $(COMPOSE_FILE) ps
 
-# Run a one-time command on a running container
-exec:
-	docker-compose -f $(COMPOSE_FILE) exec $(SERVICE) $(COMMAND)
-
 # Clean up unused Docker resources (images, containers, volumes, etc.)
 prune:
 	docker system prune -f
 
 # Build and start the containers in one go
 restart: down up
-
-# Run tests if you have any test containers
-test:
-	docker-compose -f $(COMPOSE_FILE) run --rm $(SERVICE) /bin/sh -c "your-tests-here"
 
