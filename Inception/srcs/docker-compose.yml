@@ -5,9 +5,9 @@ services:
     #depends_on:
     #                  -wordpress
     ports:
-                      -"443:443"
+                      - "443:443"
     volumes:
-                      -wordpress_volume:/var/www/wordpress:ro
+                      - wordpress_volume:/var/www/wordpress:ro
     restart:
                       always
 
@@ -17,9 +17,9 @@ services:
   #  build:            ./requirements/wordpress
   #  container_name:   wordpress
   #  depends_on:
-  #                    -mariadb
+  #                    - mariadb
   #  volumes:
-  #                    -wordpress_volume:/var/www/wordpress
+  #                    - wordpress_volume:/var/www/wordpress
   #  restart: 
   #                    always
   #
@@ -27,7 +27,7 @@ services:
   #  build:            ./requirements/mariadb
   #  container_name:   mariadb
   #  volumes:
-  #                    -wordpress_database:/var/lib/mysql
+  #                    - wordpress_database:/var/lib/mysql
   #  restart:
   #                    always
   
