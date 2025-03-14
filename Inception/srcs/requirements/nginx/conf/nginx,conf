@@ -1,9 +1,8 @@
-
 #┌─────────────────────────────────────────────────────────────────────────┐
 #│                         NGINX CONFIGURATION                             │
 #├─────────────────────────────────────────────────────────────────────────┤
-#│ Here we configure nginx.                                                │	
-#│ https://nginx.org/en/docs/beginners_guide.html                          │	
+#│ Here we configure nginx.                                                │
+#│ https://nginx.org/en/docs/beginners_guide.html                          │
 #│ nginx consists of modules which are controlled by directives specified  │
 #│ in the configuration file. Directives are divided into simple directives│ 
 #│ and block directives. A simple directive consists of the name and       │
@@ -13,11 +12,11 @@
 #│ by braces ({ and }). If a block directive can have other directives     │
 #│ inside braces, it is called a context (examples: events, http, server,  │
 #│ and location).                                                          │         
-#│                                                                         │	
+#│                                                                         │
 #└─────────────────────────────────────────────────────────────────────────┘
 
 #┌────────────┐
-#│ DAEMON OFF │	
+#│ DAEMON OFF │
 #└────────────┘
 # This turns off the daemon option for nginx which makes nginx run in the 
 # background. Running in the background will mean we end this script after 
@@ -27,7 +26,7 @@ daemon off;
 
 
 #┌─────────────┐
-#│ EVENT BLOCK │	
+#│ EVENT BLOCK │
 #└─────────────┘
 
 events
@@ -41,7 +40,7 @@ http
         server
         {
             #┌──────────────────────────┐
-            #│ HTTP -> HTTPS FORWARDING │	
+            #│ HTTP -> HTTPS FORWARDING │
             #└──────────────────────────┘
             listen                  80;                                                 # listen for IPv4 connection
             listen                  [::]:80;                                            # listen for IPv6 connection
@@ -52,31 +51,29 @@ http
         {
             
             #┌────────────────────┐
-            #│ PORT / DOMAIN CONF │	
+            #│ PORT / DOMAIN CONF │
             #└────────────────────┘
             listen                  443         ssl;                                    # IPv4 address resolver 
             listen                  [::]:443    ssl;                                    # IPv6 address resolver
             server_name             bmatos-d.42.ma;                                     # localhost URL aliases
 
             #┌──────────┐
-            #│ SSL CONF │	
+            #│ SSL CONF │
             #└──────────┘
             ssl_certificate         /etc/ssl/certs/ecc_cert.crt;                        # Certificate Location
             ssl_certificate_key     /etc/ssl/private/ecc_private.key;                   # Key Location
             ssl_protocols           TLSv1.3;                                            # SSL Protocol to use
             
             #┌──────────┐
-            #│ TODO     │	
+            #│ ROOT     │
             #└──────────┘
-            #root                    /var/www/html;
-            #index                   index.php;
-            #location ~ \.php$
-            #{
-            #    try_files                       \$uri =404;
-            #    include                         fastcgi_params;
-            #}
+            root                    /var/www/wordpress;                                 # Where web files are stored
+            index                   index.php;                                          # What files to look for by default () 
+            location ~ \.php$
+            {
+                try_files                       \$uri =404;
+                include                         fastcgi_params;
+            }
         }
 
 }
-#fastcgi_param SCRIPT_FILENAME   $document_root$fastcgi_script_name;
-#fastcgi_pass                    wordpress:9000;
