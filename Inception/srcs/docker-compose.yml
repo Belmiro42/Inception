@@ -7,7 +7,7 @@ services:
     ports:
                       - "443:443"
     volumes:
-                      - wordpress_volume:/var/www/wordpress:ro
+                      - /home/bmatos-d/data/wordpress:/var/www/wordpress:ro
     restart:
                       always
 
@@ -19,7 +19,7 @@ services:
   #  depends_on:
   #                    - mariadb
   #  volumes:
-  #                    - wordpress_volume:/var/www/wordpress
+  #                    - /home/bmatos-d/data/wordpress:/var/www/html
   #  restart: 
   #                    always
   #
@@ -27,18 +27,11 @@ services:
   #  build:            ./requirements/mariadb
   #  container_name:   mariadb
   #  volumes:
-  #                    - wordpress_database:/var/lib/mysql
+  #                    - /home/bmatos-d/data/mysql:/var/lib/mysql
   #  restart:
   #                    always
   
 volumes:
-  wordpress_volume:
-    driver_opts:
-      type: none
-      device:         /home/bmatos-d/data/wordpress
-
-  wordpress_database:
-    driver_opts:
-      type: none
-      device:         /home/bmatos-d/data/mysql
+  - /home/bmatos-d/data/wordpress:/var/www/html
+  - /home/bmatos-d/data/mysql:/var/lib/mysql
   
