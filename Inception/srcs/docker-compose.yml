@@ -32,6 +32,16 @@ services:
   #                    always
   
 volumes:
-  - /home/bmatos-d/data/wordpress:/var/www/html
-  - /home/bmatos-d/data/mysql:/var/lib/mysql
-  
+  wordpress_files:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/bmatos-d/data/wordpress
+
+  wordpress_db:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/bmatos-d/data/mysql
