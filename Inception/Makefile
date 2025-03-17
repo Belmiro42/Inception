@@ -1,34 +1,21 @@
-# Makefile for Docker Compose
+all 	: up
 
-# Name of the Docker Compose service (you can change this)
-COMPOSE_FILE=./srcs/docker-compose.yml
+up			:
+	docker-compose -f ./srcs/docker-compose.yml up
+	
 
+down		:
+	docker-compose -f ./srcs/docker-compose.yml down
 
+logs		:
+	docker-compose -f ./srcs/docker-compose.yml logs
 
-# Build the Docker images defined in the Docker Compose file
-build:
-	docker-compose -f $(COMPOSE_FILE) build
+what		:
+	@echo PROCESSES $(shell docker ps -a -q | wc -l)
+	@docker ps -a -q
+	@echo IMAGES $(shell docker images -a -q | wc -l)
+	@docker images -a -q
 
-# Start the services in the background
-up:
-	docker-compose -f $(COMPOSE_FILE) up
-
-# Stop the services
-down:
-	docker-compose -f $(COMPOSE_FILE) down
-
-# View the logs of the services
-logs:
-	docker-compose -f $(COMPOSE_FILE) logs -f
-
-# List running Docker Compose services
-ps:
-	docker-compose -f $(COMPOSE_FILE) ps
-
-# Clean up unused Docker resources (images, containers, volumes, etc.)
-prune:
-	docker system prune -f
-
-# Build and start the containers in one go
-restart: down up
-
+flush	 	:
+	@docker stop $(shell docker ps -q -a)
+	@docker rm $(shell docker ps -q -a); docker image rm $(shell docker images -q -a)
