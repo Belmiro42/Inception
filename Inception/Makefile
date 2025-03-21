@@ -1,7 +1,7 @@
 all 	: up
 
 up			:
-	docker-compose -f ./srcs/docker-compose.yml up
+	docker-compose -f ./srcs/docker-compose.yml up --build
 	
 
 down		:
@@ -16,6 +16,16 @@ what		:
 	@echo IMAGES $(shell docker images -a -q | wc -l)
 	@docker images -a -q
 
-flush	 	:
+rem			:
+	@rm -rf /home/bmatos-d/data/mysql/*
+	@rm -rf /home/bmatos-d/data/wordpress/*
+
+flush	 	:  rem
 	@docker stop $(shell docker ps -q -a)
 	@docker rm $(shell docker ps -q -a); docker image rm $(shell docker images -q -a)
+	@docker volume remove $(docker volume ls)
+
+flushe	 	: 
+	@docker stop $(shell docker ps -q -a)
+	@docker rm $(shell docker ps -q -a); docker image rm $(shell docker images -q -a)
+	@docker volume remove $(docker volume ls)

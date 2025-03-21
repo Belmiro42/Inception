@@ -1,6 +1,8 @@
-FROM    alpine:3.20
+FROM            alpine:3.20
 
-COPY    ./tools/cmd.sh      /
-COPY    ./conf/nginx.conf   /
+COPY            ./tools/cmd.sh      /
+COPY            ./conf/nginx.conf   /
 
-CMD     ["/cmd.sh"]
+STOPSIGNAL      SIGTERM
+
+CMD             ["/cmd.sh"]

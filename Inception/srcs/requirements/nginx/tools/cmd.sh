@@ -5,10 +5,9 @@
 #├─┤
 #│ │	
 #└─┘
-apk     update      >listen
-apk     upgrade     >listen
-apk     add nginx   >listen
-apk     add openssl >listen
+
+apk update              >   /dev/null
+apk add nginx openssl   >   /dev/null
 
 #┌─────────────────────────────────────────────────────────────────────────┐
 #│               GENERATING AND STORING THE CERTIFICATE                    │	
@@ -34,8 +33,8 @@ apk     add openssl >listen
     #-out 
     # Output the key to ...
 
+mkdir -p /etc/ssl/certs /etc/ssl/private
 openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:prime256v1 -out /etc/ssl/private/ecc_private.key
-
 #┌──────────┐
 #│ KEYCHECK │	
 #└──────────┘
@@ -98,4 +97,4 @@ openssl req -new -x509 -days 365 -key /etc/ssl/private/ecc_private.key -out  /et
 
 mv /nginx.conf /etc/nginx/nginx.conf
 
-nginx
+exec nginx

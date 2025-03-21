@@ -1,6 +1,7 @@
-FROM    alpine:3.20
+FROM 		alpine:3.20
 
-COPY source dest
-COPY source dest
+COPY 		tools/docker-entrypoint.sh /docker-entrypoint.sh
 
-CMD ["cmd.sh"]
+STOPSIGNAL  SIGTERM
+
+CMD			["/docker-entrypoint.sh"]

@@ -2,46 +2,66 @@ services:
   nginx:
     build:            ./requirements/nginx
     container_name:   nginx
-    #depends_on:
-    #                  -wordpress
+    depends_on:
+                      - wordpress
     ports:
                       - "443:443"
     volumes:
-                      - /home/bmatos-d/data/wordpress:/var/www/wordpress:ro
+                      - wordpress_files:/var/www/wordpress:ro
     restart:
                       always
-
+    networks:
+      - wp_network
+    env_file:
+      - .env
     
   
-  #wordpress:
-  #  build:            ./requirements/wordpress
-  #  container_name:   wordpress
-  #  depends_on:
-  #                    - mariadb
-  #  volumes:
-  #                    - /home/bmatos-d/data/wordpress:/var/www/html
-  #  restart: 
-  #                    always
-  #
-  #mariadb:
-  #  build:            ./requirements/mariadb
-  #  container_name:   mariadb
-  #  volumes:
-  #                    - /home/bmatos-d/data/mysql:/var/lib/mysql
-  #  restart:
-  #                    always
+  wordpress:
+    build:            ./requirements/wordpress
+    container_name:   wordpress
+    depends_on:
+                      - mariadb
+    volumes:
+                      - wordpress_files:/var/www/wordpress
+    restart: 
+                      always
+    networks:
+      - wp_network   
+    env_file:
+      - .env              
   
+  mariadb:
+    build:
+      context:      ./requirements/mariadb
+  
+    container_name: mariadb
+  
+    restart:
+                    always
+  
+    networks:
+                    - wp_network
+    volumes:
+                    - wordpress_db:/var/lib/mysql
+  
+    env_file:
+                    - .env   
+   
 volumes:
   wordpress_files:
-    driver: local
+    driver:         local
     driver_opts:
-      o: bind
-      type: none
-      device: /home/bmatos-d/data/wordpress
+      o:            bind
+      type:         none
+      device:       /home/bmatos-d/data/wordpress
 
   wordpress_db:
-    driver: local
+    driver:         local
     driver_opts:
-      o: bind
-      type: none
-      device: /home/bmatos-d/data/mysql
+      o:            bind
+      type:         none
+      device:       /home/bmatos-d/data/mysql
+
+networks:
+  wp_network:
+    driver:         bridge
